@@ -12,7 +12,9 @@ Vue.directive('overflow-title', function(el, { value, oldValue }){
     
       document.body.appendChild(span)
     
-      if (this.offsetWidth < span.offsetWidth || this.parentNode.offsetWidth < this.parentNode.scrollWidth) {
+      const { width } = this.getBoundingClientRect()
+    
+      if (width < span.offsetWidth || this.parentNode.offsetWidth < this.parentNode.scrollWidth) {
         this.setAttribute('title', value)
       }else{
         this.setAttribute('title', '')
